@@ -1,0 +1,152 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.editmodal-content {
+  background: white;
+  padding: 20px;
+  border-top-left-radius: 40px; /* 3 times larger than others */
+  border-bottom-right-radius: 40px; /* 3 times larger than others */
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border: 1px solid #7ec646; /* Green border color */
+  width: 80%;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.close-button {
+  background: transparent;
+  border: none;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+.modal-body {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.left-side,
+.right-side {
+  width: 45%;
+}
+
+.left-side label,
+.right-side h3 {
+  display: block;
+  margin-bottom: 10px;
+}
+
+input[type="text"],
+input[type="date"],
+select,
+textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  border-top-left-radius: 10px; /* 3 times larger than others */
+  border-bottom-right-radius: 10px; /* 3 times larger than others */
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+.modal-footer {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+.save-button {
+  background-color: #7ec646;
+  color: white;
+}
+
+.cancel-button {
+  background-color: #ccc;
+  color: black;
+  margin-left: 10px;
+}
+
+.comments,
+.attachments {
+  margin-top: 20px;
+}
+.comments button,
+.attachments button {
+  align-self: flex-end; /* Aligns the button to the right */
+  background-color: #7ec646;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-top-left-radius: 10px; /* 3 times larger than others */
+  border-bottom-right-radius: 10px; /* 3 times larger than others */
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  cursor: pointer;
+}
+
+.comments ul,
+.attachments ul {
+  list-style: none;
+  padding: 0;
+}
+
+.comments li,
+.attachments li {
+  background: #f9f9f9;
+  margin: 5px 0;
+  padding: 10px;
+  border-radius: 4px;
+}
+.attachments input {
+  margin-bottom: 20px;
+}
+.button-side {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  align-items: flex-end;
+  align-self: flex-end;
+}
+.modal-body input[type="text"],
+.modal-body input[type="date"],
+.modal-body select,
+.modal-body textarea {
+  border: 1px solid #7ec646; /* Green border */
+  border-radius: 4px; /* Optional: to match the border-radius of buttons */
+  padding: 8px; /* Optional: for better spacing */
+  margin-bottom: 10px; /* Adds space between fields */
+}
+
+.modal-body input[type="text"]:focus,
+.modal-body input[type="date"]:focus,
+.modal-body select:focus,
+.modal-body textarea:focus {
+  border-color: #5cb85c; /* Darker green for focus state */
+  outline: none; /* Remove default browser outline */
+}

@@ -1,0 +1,236 @@
+:root {
+  --navbar-bg-color: #fff;
+  --darkgrey-color: #5f6265;
+  --navbar-icon-size: 24px;
+  --navbar-text-size: 14px;
+  --navbar-icon-margin-bottom: 5px;
+  --green-gradient: linear-gradient(15deg, #7ec646, #4e8026);
+  --green-text: #7ec646;
+  --bg-color: #fdfdfd;
+  --field-color: #f3f3f3;
+  --black-color: #1e2023;
+  --blue-color: #4285f4;
+  --mid-grey: #88898a;
+  --light-white: #b6b6b6;
+}
+
+.main-container {
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login-text {
+  color: var(--green-text); /* Change this to any color you prefer */
+  font-size: 22px; /* Example font size */
+  margin-bottom: 5px;
+}
+.logo-second {
+  color: var(--black-color); /* Change this to any color you prefer */
+  font-size: 14px; /* Example font size */
+  margin-bottom: 5px;
+}
+.leaf-logo {
+  width: 10rem;
+  height: 10rem;
+}
+.left-container {
+  display: flex;
+  width: 50%;
+  height: 100vh;
+  background: var(--green-gradient);
+  align-items: center; /* Center content vertically */
+  justify-content: center; /* Center content horizontally */
+}
+.splash-container {
+  height: 100vh;
+  width: 100%;
+}
+.login-area {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-color);
+  width: 50%;
+  height: 100vh;
+  align-items: center; /* Center content vertically */
+  justify-content: center; /* Center content horizontally */
+}
+.input-field {
+  border: 1px solid var(--green-text);
+  margin: 5px 0;
+  border-radius: 10px;
+  width: 60%;
+  box-sizing: border-box;
+  padding: 18px 15px;
+  background-color: var(--field-color);
+}
+.auth-main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.auth-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 2cap;
+}
+.checkbox-container {
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox {
+  display: none;
+}
+
+.checkbox + .checkbox-label {
+  position: relative;
+  padding-left: 25px;
+  cursor: pointer;
+}
+
+.checkbox + .checkbox-label::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--green-text);
+  background-color: white;
+  border-radius: 3px;
+}
+
+.checkbox:checked + .checkbox-label::before {
+  background-color: var(--green-text);
+  border-color: var(--green-text);
+}
+
+.checkbox:checked + .checkbox-label::after {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 45%;
+  transform: translateY(-50%) rotate(45deg);
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+}
+
+.checkbox-label {
+  margin: 0;
+  font-size: 12px;
+}
+
+.forgot-password {
+  color: var(--blue-color);
+  text-decoration: none;
+  font-size: 12px;
+}
+
+.forgot-password:hover {
+  text-decoration: underline;
+}
+
+.gradient-button {
+  width: 60%;
+  padding: 15px;
+  margin-top: 2rem;
+  background: var(--green-gradient);
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center; /* Center the text */
+  text-decoration: none; /* Remove underline */
+}
+
+.gradient-button:hover {
+  background: var(--green-gradient);
+}
+
+/* line with text */
+.line-with-text {
+  display: flex;
+  align-items: center;
+  margin-top: 1.5rem;
+}
+
+.line {
+  height: 1px;
+  width: 10rem;
+  background-color: var(--mid-grey);
+}
+
+.text {
+  margin: 0 10px;
+  color: var(--mid-grey);
+}
+.row {
+  margin-top: 1.5rem;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.box {
+  padding: 10px 0px;
+  border-radius: 5px;
+  align-items: center;
+  justify-content: center;
+  width: 7.5rem;
+  text-align: center;
+  border: 0.5px solid var(--light-white);
+  margin: 0px 3px;
+}
+
+.box img {
+  padding-top: 2px;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.container {
+  margin-top: 4rem;
+  text-align: center;
+}
+
+.container p {
+  font-size: 14px;
+  color: var(--black-color);
+}
+
+.signup {
+  color: var(--green-text);
+  text-decoration: none;
+}
+
+/* Common.css */
+.error-message {
+  color: red;
+  margin-bottom: 10px;
+}
+@media screen and (max-width: 768px) {
+  .left-container {
+    display: none; /* Hide the left container with the image on screens smaller than 768px */
+  }
+  .login-area {
+    width: 100%;
+  }
+}

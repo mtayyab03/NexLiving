@@ -1,0 +1,265 @@
+:root {
+  --green-text: #7ec646;
+}
+.addtask-button {
+  padding: 10px 20px;
+  background-color: var(--green-text);
+  color: white;
+  border: none;
+  border-top-left-radius: 10px; /* 3 times larger than others */
+  border-bottom-right-radius: 10px; /* 3 times larger than others */
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  cursor: pointer;
+}
+.seed-pic {
+  width: 40px;
+  height: 40px;
+}
+.modal-header {
+  margin-bottom: 20px;
+}
+.modal-header h2 {
+  color: var(--green-text);
+}
+.main-container {
+  width: 100%;
+  margin-top: 50px;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-container {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  margin-left: 70px;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal-content input[type="text"],
+.modal-content input[type="date"],
+.modal-content select,
+.modal-content textarea {
+  border: 1px solid #7ec646; /* Green border color */
+  border-radius: 4px; /* Optional: rounded corners */
+  padding: 8px; /* Optional: add some padding */
+}
+
+.modal-content input[type="text"]:focus,
+.modal-content input[type="date"]:focus,
+.modal-content textarea:focus .modal-content select:focus {
+  outline: none; /* Remove default focus outline */
+  border-color: #5b8c2e; /* Darker green for focus */
+}
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-top-left-radius: 40px; /* 3 times larger than others */
+  border-bottom-right-radius: 40px; /* 3 times larger than others */
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border: 1px solid #7ec646; /* Green border color */
+  width: 400px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.button-group {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.button-group button {
+  margin-left: 10px;
+  padding: 10px 20px;
+  border: none;
+  border-top-left-radius: 10px; /* 3 times larger than others */
+  border-bottom-right-radius: 10px; /* 3 times larger than others */
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  cursor: pointer;
+}
+
+.button-group button[type="button"] {
+  background-color: #6c757d;
+  color: white;
+}
+
+.button-group button[type="submit"] {
+  background-color: var(--green-text);
+  color: white;
+}
+
+/* grid */
+
+.task-grid {
+  margin-top: 20px;
+  width: 90%;
+  margin-left: 70px;
+  display: flex;
+  justify-content: space-between;
+  display: flex;
+  flex-wrap: wrap; /* Allows columns to wrap on smaller screens */
+  gap: 20px; /* Adjust gap between columns */
+}
+
+.task-column {
+  align-items: center;
+  justify-content: center;
+  width: 30%;
+  /* background-color: #f8f9fa; */
+  padding: 10px;
+  border-radius: 5px;
+  flex: 1;
+  min-width: 300px; /* Ensure columns are at least 300px wide */
+  max-width: 32%; /* Prevent columns from becoming too wide */
+}
+.task-column h2 {
+  margin-bottom: 10px; /* Adjust the value as needed */
+}
+
+.task-card {
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  padding: 10px;
+  /* height: 15 rem; */
+  margin-bottom: 10px;
+  border-top-left-radius: 20px; /* 3 times larger than others */
+  border-bottom-right-radius: 20px; /* 3 times larger than others */
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border: 1.7px solid var(--green-text); /* Setting border color to green */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.task-title {
+  font-weight: 600;
+  font-size: 20px;
+  align-self: center;
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+.task-titlealc {
+  font-weight: 600;
+  align-self: center;
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+
+.task-line {
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  background-color: yellow;
+  margin-bottom: 8px;
+}
+
+.task-profile {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.task-profileleft {
+  display: flex;
+  align-items: center;
+}
+.task-status-circle {
+  width: 95%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.profile-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.assigned-to {
+  font-size: 14px;
+}
+.task-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+.assigned-tolastupdate-container {
+  display: flex;
+  align-items: center; /* Center items vertically */
+  justify-content: space-between; /* Space between text and buttons */
+  height: 23px;
+  margin-bottom: 5px;
+}
+
+.task-actions button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5em;
+  padding: 1px;
+  margin-right: 5px;
+}
+
+.assigned-tolastupdate {
+  font-size: 12px;
+  margin-top: 5px;
+}
+.subtopics {
+  margin-top: 10px;
+  color: #6c757d;
+  font-size: 13px;
+}
+
+.subtopic {
+  background-color: #e9ecef;
+  padding: 5px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  border: 1px solid #7ec646; /* Green border color */
+}
+.edit-icon {
+  cursor: pointer;
+  font-size: 1.2em;
+  color: var(--green-text); /* Green color for edit icon */
+  margin-right: 13px;
+}
+
+.task-headeralc {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  justify-content: space-between;
+}
+
+.toggle-icon {
+  margin-left: 10px; /* Space between title and icon */
+  font-size: 12px; /* Adjust icon size */
+}

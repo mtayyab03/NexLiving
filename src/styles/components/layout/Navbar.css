@@ -1,0 +1,282 @@
+:root {
+  --navbar-bg-color: #fff;
+  --navbar-border-color: #1e2023;
+  --darkgrey-color: #5f6265;
+  --navbar-text-color: #333;
+  --navbar-icon-size: 24px;
+  --navbar-text-size: 14px;
+  --navbar-icon-margin-bottom: 5px;
+  --green-gradient: linear-gradient(45deg, #7ec646, #4e8026);
+  --green-text: #7ec646;
+  --bg-color: #fdfdfd;
+  --field-color: #f3f3f3;
+  --black-color: #1e2023;
+  --blue-color: #4285f4;
+  --mid-grey: #88898a;
+  --light-white: #b6b6b6;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--navbar-bg-color);
+  padding: 10px;
+  border-bottom: 0.05px solid var(--darkgrey-color);
+}
+
+.scrollNav {
+  display: flex;
+  width: 80%; /* Fixed width for the scrollable area */
+  overflow-x: auto; /* Enable horizontal scrolling */
+  white-space: nowrap; /* Prevent wrapping of flex items */
+  background-color: var(--navbar-bg-color);
+  padding: 10px;
+  cursor: pointer;
+}
+
+.navFixed {
+  display: flex;
+  justify-content: space-around;
+  background-color: var(--navbar-bg-color);
+  padding: 10px;
+}
+
+.navbar-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  margin-left: 40px;
+  flex: 0 0 auto; /* Prevent shrinking or growing */
+}
+
+.navbar-item-fixed {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px; /* Adjust the size as needed */
+  height: 40px; /* Adjust the size as needed */
+  background: var(--green-gradient); /* Container color */
+  border-radius: 20%; /* Makes the container a circle */
+  margin: 5px; /* Space between icons */
+  margin-left: 20px;
+}
+
+.navbar-item-fixed .navbar-icon {
+  color: var(--navbar-bg-color); /* Icon color */
+  font-size: 24px; /* Adjust icon size as needed */
+}
+
+.navbar-icon {
+  color: #333;
+  font-size: var(--navbar-icon-size);
+  margin-bottom: var(--navbar-icon-margin-bottom);
+}
+
+.navbar-icon-scroll {
+  font-size: var(--navbar-icon-size);
+  color: var(--black-color);
+  margin-bottom: var(--navbar-icon-margin-bottom);
+}
+.navbar-icon-scroll.selected {
+  color: var(--green-gradient);
+}
+
+.navbar-icon.selected {
+  color: var(--green-gradient); /* Apply green gradient to selected icon */
+}
+
+.navbar-text {
+  color: var(--black-color);
+}
+
+.navbar-text.selected {
+  color: transparent; /* Make the text transparent */
+  background: var(--green-gradient); /* Apply the green gradient background */
+  -webkit-background-clip: text; /* Clip the background to the text */
+  background-clip: text;
+  -webkit-text-fill-color: transparent; /* Make the text transparent */
+}
+
+.profile-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px; /* Adjust the size as needed */
+  height: 40px; /* Adjust the size as needed */
+  background: var(--green-gradient); /* Container color */
+  border-radius: 50%; /* Makes the container a circle */
+  margin: 5px;
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+.profile-icon .profile-image {
+  width: 40px; /* Adjust the size as needed */
+  height: 40px; /* Adjust the size as needed */
+  border-radius: 50%;
+  object-fit: contain;
+}
+
+.dropdown-menu {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 150px;
+  z-index: 1000;
+  margin-bottom: 0.5rem;
+}
+
+.dropdown-item {
+  padding: 10px 20px;
+  color: var(--black-color);
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown-item:hover {
+  background-color: var(--field-color);
+}
+.dropdown-item {
+  display: flex; /* Align items in a row */
+  align-items: center; /* Center align items vertically */
+  padding: 5px 3px;
+  color: var(--black-color);
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.dropdown-profile-image {
+  width: 16px; /* Adjust size as needed */
+  height: 16px;
+  margin-right: 10px; /* Space between image and text */
+}
+.dropdown-text {
+  width: 100%;
+  font-size: 10px; /* Adjust font size as needed */
+  color: var(--black-color); /* Adjust text color */
+  font-weight: 500; /* Adjust font weight */
+}
+
+.profile-mail {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.profile-info {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-name {
+  font-size: 10px; /* Adjust font size as needed */
+  color: var(--black-color); /* Adjust text color */
+  font-weight: 600; /* Adjust font weight */
+  margin-bottom: 3px; /* Space between name and email */
+}
+
+.profile-email {
+  font-size: 8px; /* Adjust font size as needed */
+  color: var(--light-white); /* Adjust text color */
+  font-weight: 400; /* Adjust font weight */
+}
+
+.profile-separator {
+  width: 100%; /* Full width */
+  height: 1px; /* Thickness of the line */
+  background-color: #ddd; /* Color of the line */
+  margin: 6px 0px; /* Space above the line */
+}
+.error-message {
+  color: red;
+  font-size: 10px;
+  margin-bottom: 10px;
+}
+
+/* Styles for the modal */
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+}
+.modal-heading {
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.change-password-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.change-password-form label {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.change-password-form input {
+  padding: 10px;
+  margin-top: 6px;
+  margin-bottom: 15px;
+  border: 1px solid var(--green-text);
+  border-radius: 5px;
+  width: 100%;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.modal-buttons button {
+  padding: 10px 20px;
+  margin-left: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.modal-buttons button[type="button"] {
+  background-color: #ccc;
+  color: #fff;
+}
+
+.modal-buttons button[type="submit"] {
+  background-color: #7ec646;
+  color: #fff;
+}
+.modal-passimage {
+  width: 50px; /* Adjust size as needed */
+  height: 50px;
+  margin-bottom: 5px;
+}
+.modal-header {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
