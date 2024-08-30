@@ -8,6 +8,7 @@ import ForgetPassword from "./pages/auth/ForgetPassword";
 import ForgetChangePassword from "./pages/auth/ForgetChangePassword";
 import Task from "./pages/auth/Task";
 import CalendarMeeting from "./pages/auth/CalendarMeeting";
+import FullCalendar from "./pages/auth/FullCalendar";
 
 import "./App.css";
 
@@ -16,7 +17,9 @@ const App: React.FC = () => {
     <Router>
       <Routes>
         {/* <Route path="/" element={<Dashboard />} /> */}
-        <Route path="/" element={<CalendarMeeting />} />
+        <Route path="/" element={<FullCalendar />} />
+
+        {/* <Route path="/" element={<CalendarMeeting />} /> */}
         {/* <Route path="/" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/otp" element={<OTPScreen />} />

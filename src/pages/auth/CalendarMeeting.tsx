@@ -17,10 +17,14 @@ interface Meeting {
   purpose: string;
   invitedBy?: string;
 }
+interface MeetingsByDate {
+  [key: string]: Meeting[];
+}
 
 const CalendarMeeting: React.FC = () => {
+  const [isViewingMeetings, setIsViewingMeetings] = useState<boolean>(true);
   const [date, setDate] = useState<Date>(new Date());
-  const [meetings, setMeetings] = useState<Meeting[]>([]);
+  const [meetings, setMeetings] = useState<MeetingsByDate>({});
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [selectedMeeting, setSelectedMeeting] = useState<Meeting | null>(null);
   const [newMeeting, setNewMeeting] = useState<Meeting>({
@@ -31,27 +35,23 @@ const CalendarMeeting: React.FC = () => {
   });
 
   const handleDateClick = (date: Date) => {
-    const meetingForDate = meetings.find(
-      (meeting) =>
-        meeting.date &&
-        new Date(meeting.date).toDateString() === date.toDateString()
-    );
+    const meetingsForDate = meetings[date.toDateString()] || [];
 
-    if (meetingForDate) {
-      setSelectedMeeting(meetingForDate);
-      setIsModalOpen(true);
+    if (meetingsForDate.length > 0) {
+      setIsViewingMeetings(true); // Set to view mode if meetings exist
+      setSelectedMeeting(meetingsForDate[0]);
     } else {
+      setIsViewingMeetings(false); // Set to create mode if no meetings exist
       setSelectedMeeting(null);
-      setNewMeeting({ ...newMeeting, date });
-      setIsModalOpen(true);
     }
-  };
 
+    setNewMeeting({ ...newMeeting, date });
+    setIsModalOpen(true);
+  };
   const handleMeetingClick = (meeting: Meeting) => {
     setSelectedMeeting(meeting);
     setIsModalOpen(true);
   };
-
   const handleSaveMeeting = () => {
     if (
       newMeeting.date &&
@@ -59,7 +59,12 @@ const CalendarMeeting: React.FC = () => {
       newMeeting.time &&
       newMeeting.purpose
     ) {
-      setMeetings([...meetings, newMeeting]);
+      const meetingDateKey = newMeeting.date.toDateString();
+      const updatedMeetings = {
+        ...meetings,
+        [meetingDateKey]: [...(meetings[meetingDateKey] || []), newMeeting],
+      };
+      setMeetings(updatedMeetings);
       setNewMeeting({
         date: null,
         members: [],
@@ -86,29 +91,37 @@ const CalendarMeeting: React.FC = () => {
         }
         value={date}
         tileContent={({ date }: { date: Date }) => {
-          const meetingForDate = meetings.find(
-            (meeting) =>
-              meeting.date &&
-              new Date(meeting.date).toDateString() === date.toDateString()
-          );
-          return meetingForDate ? (
-            <button
-              className="meeting-indicator"
-              onClick={() => handleMeetingClick(meetingForDate)}
-            >
-              M
-            </button>
-          ) : null;
+          const meetingsForDate = meetings[date.toDateString()] || [];
+          if (meetingsForDate.length > 0) {
+            return (
+              <div>
+                <button
+                  className="meeting-indicator"
+                  onClick={(e) => {
+                    e.stopPropagation(); // Prevent triggering onClickDay
+                    handleDateClick(date);
+                  }}
+                >
+                  M
+                  {meetingsForDate.length > 1
+                    ? ` (${meetingsForDate.length})`
+                    : ""}
+                </button>
+              </div>
+            );
+          } else {
+            return null;
+          }
         }}
         onClickDay={handleDateClick}
       />
       {isModalOpen && (
         <div className="modal-overlay">
           <div className="modal-content">
-            {selectedMeeting ? (
+            {isViewingMeetings ? (
               <div>
                 <div className="modal-header">
-                  <h2>Meeting Details</h2>
+                  <h2>Meetings on {selectedMeeting?.date?.toDateString()}</h2>
                   <button
                     className="close-button"
                     onClick={() => setIsModalOpen(false)}
@@ -117,30 +130,38 @@ const CalendarMeeting: React.FC = () => {
                   </button>
                 </div>
                 <div className="modal-body">
-                  <div className="left-side">
-                    <p>
-                      <strong>Invited By:</strong> {selectedMeeting.invitedBy}
-                      Tayyab
-                    </p>
-                    <p>
-                      <strong>Members:</strong>{" "}
-                      {selectedMeeting.members
-                        .map((member) => member.label)
-                        .join(", ")}
-                    </p>
-                  </div>
-                  <div className="right-side">
-                    <p>
-                      <strong>Time:</strong> {selectedMeeting.time}
-                    </p>
-                    <p>
-                      <strong>Purpose:</strong> {selectedMeeting.purpose}
-                    </p>
-                  </div>
+                  {meetings[selectedMeeting?.date?.toDateString() || ""].map(
+                    (meeting, index) => (
+                      <div key={index} className="meeting-details">
+                        <p>
+                          <strong>Invited By:</strong> {meeting.invitedBy} M
+                          Tayyab
+                        </p>
+                        <p>
+                          <strong>Members:</strong>{" "}
+                          {meeting.members
+                            .map((member) => member.label)
+                            .join(", ")}
+                        </p>
+                        <p>
+                          <strong>Time:</strong> {meeting.time}
+                        </p>
+                        <p>
+                          <strong>Purpose:</strong> {meeting.purpose}
+                        </p>
+                      </div>
+                    )
+                  )}
                 </div>
                 <div className="modal-footer">
                   <button
                     className="save-button"
+                    onClick={() => setIsViewingMeetings(false)}
+                  >
+                    Add New Meeting
+                  </button>
+                  <button
+                    className="close-button"
                     onClick={() => setIsModalOpen(false)}
                   >
                     Close
